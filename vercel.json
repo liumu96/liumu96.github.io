@@ -1,5 +1,6 @@
 {
   "rewrites": [
-    { "source": "/blender", "destination": "/index.html" }
+    { "source": "/blender", "destination": "/index.html" },
+    { "source": "/cv", "destination": "/index.html" }
   ]
 }

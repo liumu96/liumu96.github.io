@@ -1,7 +1,8 @@
 export const profile = {
   name: "Xing Liu",
-  role: "First-year Ph.D. Student",
+  role: "Ph.D. Student",
   institute: "Institute of Visual Computing",
+  instituteHref: "https://ivc.tugraz.at/",
   university: "Graz University of Technology",
   location: "Graz, Austria",
   supervisors: [
@@ -10,25 +11,26 @@ export const profile = {
   ],
   email: "xing.liu@tugraz.at",
   orcid: "0009-0002-0065-2693",
-  portrait: "/images/xing-liu.jpg",
+  portrait: "/images/xing-liu-portrait-winter-2026.jpg",
   cv: "/CV_Xing_Liu_2026.pdf",
   bio: [
-    "My research interests include gaze estimation, augmented and virtual reality, and human-computer interaction.",
-    "Beyond my current research, I am also interested in computer graphics, especially simulation and animation.",
-    "I enjoy building applications that turn ideas into interactive experiences, and I am always happy to exchange ideas, discuss new directions, and explore potential collaborations.",
+    "My research focuses on eye tracking and gaze interaction in augmented and virtual reality, alongside broader work in human-computer interaction. I also enjoy computer graphics, simulation, and animation—especially when they turn ideas into interactive experiences.",
+    "💬 I’m always happy to exchange ideas, discuss new directions, and explore potential collaborations.",
   ],
   links: [
     { label: "Email", href: "mailto:xing.liu@tugraz.at" },
     { label: "ORCID", href: "https://orcid.org/0009-0002-0065-2693" },
+    { label: "Google Scholar", href: "https://scholar.google.com/citations?user=mg7MkI4AAAAJ" },
     { label: "IVC Profile", href: "https://ivc.tugraz.at/people/xing-liu/" },
     { label: "GitHub", href: "https://github.com/liumu96" },
   ],
 };
 
 export const researchThemes = [
-  { title: "Gaze estimation" },
-  { title: "Augmented and virtual reality" },
-  { title: "Human-computer interaction" },
+  { title: "Eye tracking & gaze interaction", emoji: "👀" },
+  { title: "Augmented and virtual reality", emoji: "🥽" },
+  { title: "Human-computer interaction", emoji: "✨" },
+  { title: "Computer graphics", emoji: "🎨" },
 ];
 
 export const education = [
@@ -117,6 +119,7 @@ export const publications = [
     authors: "Y. Chen, F. Fang-Yi Tan, Z. Wang, X. Liu, J. Zhang, Y. Huang, S. Zhao, and C. C. Yen",
     venue: "CHI '25, Article 359, 24 pages, Yokohama, Japan, 2025",
     doi: "10.1145/3706598.3713793",
+    award: "CHI 2025 Honorable Mention Award",
     tags: ["Human–Computer Interaction", "Mindful Eating", "Gaze-Aware Systems"],
   },
 ];
@@ -128,7 +131,7 @@ export const explorations = [
     text: "Co-developed with Team Dollaria. Recipient of the Best AI Application Award at the 2025 Rokid University AR Application Innovation Challenge.",
     image: "/images/projects/zhiwojing-award.jpg",
     href: "https://finance.sina.com.cn/roll/2025-08-11/doc-infkriex9609672.shtml",
-    cta: "View award source",
+    showCta: false,
     external: true,
   },
   {
@@ -136,16 +139,19 @@ export const explorations = [
     title: "3D Modeling",
     text: "Building 3D scenes and assets while exploring form, material, lighting, and visual storytelling.",
     href: "/blender",
+    visible: false,
   },
   {
     label: "Three.js · WebGL",
     title: "Creative Coding",
     text: "Turning ideas into playful, interactive 3D experiences that live directly on the web.",
+    visible: false,
   },
   {
     label: "C++ · Unity",
     title: "Physics Simulation",
     text: "Making physical systems visible and interactive through experiments with bodies, cloth, soft materials, and fluids.",
+    visible: false,
   },
 ];
 

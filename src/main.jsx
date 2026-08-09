@@ -7,20 +7,18 @@ import {
   BriefcaseBusiness,
   Building2,
   ExternalLink,
-  Eye,
   FileText,
   Fingerprint,
   GitFork,
-  Glasses,
   GraduationCap,
   Mail,
   MapPin,
-  MousePointer2,
   Moon,
   Send,
   Sun,
 } from "lucide-react";
 import "@fontsource-variable/manrope";
+import "@fontsource-variable/bricolage-grotesque";
 import {
   blenderRenders,
   blenderWorks,
@@ -38,7 +36,6 @@ const navigation = [
   ["Research", "/#research"],
   ["Publications", "/#publications"],
   ["Experience", "/#experience"],
-  ["Blender", "/blender"],
 ];
 
 function ExternalMark() {
@@ -49,28 +46,12 @@ function ProfileIcon({ label }) {
   const icons = {
     Email: Mail,
     ORCID: Fingerprint,
+    "Google Scholar": GraduationCap,
     "IVC Profile": Building2,
     GitHub: GitFork,
   };
   const Icon = icons[label] ?? ExternalLink;
   return <Icon aria-hidden="true" size={13} strokeWidth={1.8} />;
-}
-
-const bioHighlightTones = {
-  "gaze estimation": "blue",
-  "augmented and virtual reality": "warm",
-  "human-computer interaction": "green",
-  "computer graphics": "blue",
-  "simulation and animation": "warm",
-};
-
-const bioHighlightPattern = /(gaze estimation|augmented and virtual reality|human-computer interaction|computer graphics|simulation and animation)/gi;
-
-function HighlightedBio({ text }) {
-  return text.split(bioHighlightPattern).map((part, index) => {
-    const tone = bioHighlightTones[part.toLowerCase()];
-    return tone ? <mark className={`bio-mark bio-mark-${tone}`} key={`${part}-${index}`}>{part}</mark> : part;
-  });
 }
 
 function Header() {
@@ -82,11 +63,6 @@ function Header() {
   });
 
   useEffect(() => {
-    document.body.classList.toggle("nav-open", open);
-    return () => document.body.classList.remove("nav-open");
-  }, [open]);
-
-  useEffect(() => {
     document.documentElement.dataset.theme = theme;
     window.localStorage.setItem("theme", theme);
   }, [theme]);
@@ -94,11 +70,11 @@ function Header() {
   return (
     <header className="site-header">
       <div className="page-width header-inner">
-        <a className="site-name" href="/" onClick={() => setOpen(false)}>Home</a>
+        <a className="site-name" href="/" onClick={() => setOpen(false)}>Xing Liu</a>
         <button
           className="nav-toggle"
           type="button"
-          aria-label="Toggle navigation"
+          aria-label={open ? "Close navigation" : "Open navigation"}
           aria-expanded={open}
           onClick={() => setOpen(!open)}
         >
@@ -109,7 +85,7 @@ function Header() {
           {navigation.map(([label, href]) => (
             <a href={href} key={href} onClick={() => setOpen(false)}>{label}</a>
           ))}
-          <a href={profile.cv}>CV</a>
+          <a href="/cv">CV</a>
           <div className="theme-control" aria-label="Color theme">
             <Sun aria-hidden="true" size={13} />
             <Switch.Root
@@ -153,6 +129,8 @@ function InstitutionName({ item }) {
 }
 
 function HomePage() {
+  const visibleExplorations = explorations.filter((item) => item.visible !== false);
+
   return (
     <>
       <Header />
@@ -161,13 +139,26 @@ function HomePage() {
           <Portrait />
           <div className="intro-copy">
             <p className="location"><MapPin aria-hidden="true" size={13} />{profile.location}</p>
+            <h1 className="profile-name">
+              <span className="profile-hello">Hi, I’m</span>
+              <span className="profile-identity">
+                <strong>{profile.name}</strong>
+                <span className="profile-name-divider" aria-hidden="true">/</span>
+                <span className="profile-name-cn" lang="zh-CN">刘杏</span>
+                <span className="profile-greeting-emoji" aria-hidden="true">👋</span>
+              </span>
+              <span className="profile-welcome">Welcome to my homepage.</span>
+            </h1>
             <p className="role">
-              {profile.role} · {profile.institute}
+              {profile.role} ·{" "}
+              <a className="institute-link" href={profile.instituteHref} target="_blank" rel="noreferrer">
+                {profile.institute}<ExternalMark />
+              </a>
               <br />
               {profile.university}
             </p>
             <p className="bio">
-              I am <strong className="bio-name">{profile.name}</strong>, a first-year Ph.D. student at the Institute of Visual Computing, Graz University of Technology. My supervisors are{" "}
+              My doctoral research is supervised by{" "}
               {profile.supervisors.map((supervisor, index) => (
                 <React.Fragment key={supervisor.name}>
                   {index > 0 && " and "}
@@ -178,18 +169,15 @@ function HomePage() {
               ))}.
             </p>
             {profile.bio.map((paragraph) => (
-              <p className="bio" key={paragraph}><HighlightedBio text={paragraph} /></p>
+              <p className="bio" key={paragraph}>{paragraph}</p>
             ))}
             <div className="research-tags" id="research" aria-label="Research interests">
-              {researchThemes.map((theme, index) => {
-                const ResearchIcon = [Eye, Glasses, MousePointer2][index];
-                return (
+              {researchThemes.map((theme) => (
                 <span className="research-tag" key={theme.title}>
-                  <small><ResearchIcon aria-hidden="true" size={12} /></small>
+                  <small aria-hidden="true">{theme.emoji}</small>
                   {theme.title}
                 </span>
-                );
-              })}
+              ))}
             </div>
             <div className="profile-links" aria-label="Profile links">
               {profile.links.map((link) => (
@@ -202,7 +190,7 @@ function HomePage() {
                   <ProfileIcon label={link.label} />{link.label}{link.href.startsWith("http") && <ExternalMark />}
                 </a>
               ))}
-              <a href={profile.cv}><FileText aria-hidden="true" size={13} strokeWidth={1.8} />CV</a>
+              <a href="/cv"><FileText aria-hidden="true" size={13} strokeWidth={1.8} />CV</a>
             </div>
           </div>
         </section>
@@ -224,6 +212,7 @@ function HomePage() {
                     <span>{String(index + 1).padStart(2, "0")}</span>{publication.year}
                   </p>
                   <h3>{publication.title}</h3>
+                  {publication.award && <p className="publication-award">🏅 {publication.award}</p>}
                   <div className="publication-tags" aria-label="Research topics">
                     {publication.tags.map((tag) => <span key={tag}>{tag}</span>)}
                   </div>
@@ -294,17 +283,17 @@ function HomePage() {
           </Section>
         )}
 
-        {explorations.length > 0 && (
+        {visibleExplorations.length > 0 && (
           <Section id="explorations" label="Creative Explorations" icon={Boxes}>
             <div className="exploration-list">
-              {explorations.map((item) => (
+              {visibleExplorations.map((item) => (
                 <article className={item.image ? "exploration is-featured" : "exploration"} key={item.title}>
                   {item.image && <img className="exploration-image" src={item.image} alt={`${item.title} award listing`} />}
                   <div className="exploration-copy">
                     <p className="exploration-label">{item.label}</p>
                     <h3>{item.href ? <a href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noreferrer" : undefined}>{item.title} <ExternalMark /></a> : item.title}</h3>
                     <p>{item.text}</p>
-                    {item.href && <a className="exploration-cta" href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noreferrer" : undefined}>{item.cta ?? "View collection"} <span aria-hidden="true">→</span></a>}
+                    {item.href && item.showCta !== false && <a className="exploration-cta" href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noreferrer" : undefined}>{item.cta ?? "View collection"} <span aria-hidden="true">→</span></a>}
                   </div>
                 </article>
               ))}
@@ -382,8 +371,36 @@ function BlenderPage() {
   );
 }
 
+function CvPage() {
+  useEffect(() => {
+    document.title = `${profile.name} - Curriculum Vitae`;
+  }, []);
+
+  const publicCvUrl = new URL(profile.cv, window.location.origin).href;
+  const googlePreviewUrl = `https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(publicCvUrl)}`;
+  const isLocalPreview = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+  const previewUrl = isLocalPreview ? `${profile.cv}#view=FitH&toolbar=1` : googlePreviewUrl;
+
+  return (
+    <>
+      <Header />
+      <main className="page-width cv-page" id="top">
+        <section className="cv-viewer-shell" aria-label="CV preview">
+          <iframe
+            className="cv-viewer"
+            src={previewUrl}
+            title={`${profile.name} curriculum vitae`}
+          />
+        </section>
+      </main>
+    </>
+  );
+}
+
 function App() {
-  return window.location.pathname === "/blender" ? <BlenderPage /> : <HomePage />;
+  if (window.location.pathname === "/cv") return <CvPage />;
+  if (window.location.pathname === "/blender") return <BlenderPage />;
+  return <HomePage />;
 }
 
 createRoot(document.getElementById("root")).render(

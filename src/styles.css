@@ -2,7 +2,7 @@
   color-scheme: light;
   color: #19232d;
   background: #f5f4ef;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Manrope Variable", "Segoe UI", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   --ink: #19232d;
@@ -67,7 +67,7 @@ button { color: inherit; font: inherit; }
   gap: 28px;
 }
 
-.site-name { font-family: "Manrope Variable", "Helvetica Neue", sans-serif; font-size: 1.02rem; font-weight: 700; letter-spacing: -0.025em; }
+.site-name { font-family: "Bricolage Grotesque Variable", "Manrope Variable", sans-serif; font-size: 1.12rem; font-weight: 720; letter-spacing: -0.045em; }
 .site-nav { display: flex; align-items: center; gap: 25px; font-size: 0.78rem; letter-spacing: 0.02em; }
 .site-nav a, .profile-links a, .publication-links a { transition: color 160ms ease, border-color 160ms ease; }
 .site-nav a:hover, .profile-links a:hover, .publication-links a:hover { color: var(--warm); }
@@ -161,20 +161,25 @@ main { padding-top: 50px; }
 
 h1 {
   margin: 0 0 10px;
-  font-family: "Manrope Variable", "Helvetica Neue", sans-serif;
+  font-family: "Bricolage Grotesque Variable", "Manrope Variable", sans-serif;
   font-size: clamp(2.5rem, 4vw, 3.5rem);
   font-weight: 650;
   letter-spacing: -0.055em;
   line-height: 1;
 }
 
-.role { margin: 0 0 21px; color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+.profile-name { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 0.32em; margin-bottom: 10px; font-size: 1.04rem; font-weight: 520; letter-spacing: -0.018em; line-height: 1.4; }
+.profile-hello { color: var(--warm); font-weight: 680; }
+.profile-identity { display: inline-flex; align-items: baseline; gap: 0.18em; }
+.profile-name strong { font-weight: 750; }
+.profile-name-divider { color: var(--line); font-weight: 400; }
+.profile-name-cn { color: var(--muted); font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif; font-size: 0.88em; font-weight: 680; letter-spacing: 0.05em; }
+.profile-greeting-emoji { align-self: center; font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif; font-size: 0.95em; letter-spacing: 0; }
+.profile-welcome { color: var(--muted); font-size: 0.86em; font-weight: 520; }
+.role { margin: 0 0 15px; color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
+.institute-link { display: inline-flex; align-items: center; gap: 3px; color: inherit; border-bottom: 1px solid color-mix(in srgb, var(--muted) 45%, transparent); }
+.institute-link:hover { color: var(--accent); border-color: var(--accent); }
 .bio { max-width: 720px; margin: 0 0 10px; font-size: 0.94rem; line-height: 1.65; }
-.bio-name { font-weight: 700; }
-.bio-mark { padding: 0 0.08em; color: inherit; font-weight: 650; }
-.bio-mark-blue { background: linear-gradient(transparent 58%, color-mix(in srgb, var(--accent) 27%, transparent) 58%); }
-.bio-mark-warm { background: linear-gradient(transparent 58%, color-mix(in srgb, var(--warm) 28%, transparent) 58%); }
-.bio-mark-green { background: linear-gradient(transparent 58%, color-mix(in srgb, #8a9b56 32%, transparent) 58%); }
 .supervisor-link { display: inline-flex; align-items: center; gap: 3px; color: var(--accent); border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); }
 .supervisor-link:hover { color: var(--warm); border-color: var(--warm); }
 
@@ -211,7 +216,9 @@ h1 {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.65);
   color: inherit;
-  font-size: 0.58rem;
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
+  font-size: 0.92rem;
+  line-height: 1;
 }
 .research-tag small svg { width: 15px; height: 15px; stroke-width: 1.8; }
 
@@ -231,7 +238,7 @@ h1 {
   gap: 10px;
   margin: 0 0 20px;
   color: var(--ink);
-  font-family: "Manrope Variable", "Helvetica Neue", sans-serif;
+  font-family: "Bricolage Grotesque Variable", "Manrope Variable", sans-serif;
   font-size: 1.22rem;
   font-weight: 700;
   letter-spacing: -0.025em;
@@ -255,7 +262,7 @@ h3 { margin: 0; font-size: 0.98rem; font-weight: 600; letter-spacing: -0.015em; 
   align-items: center;
   gap: 10px;
   margin-bottom: 26px;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Bricolage Grotesque Variable", "Manrope Variable", sans-serif;
   font-size: 1.35rem;
   font-weight: 400;
 }
@@ -267,7 +274,7 @@ h3 { margin: 0; font-size: 0.98rem; font-weight: 600; letter-spacing: -0.015em; 
   border: 1px solid var(--line);
   border-radius: 50%;
   color: var(--accent);
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Manrope Variable", "Segoe UI", sans-serif;
   font-size: 0.6rem;
 }
 .group-title span svg { width: 16px; height: 16px; stroke-width: 1.8; }
@@ -312,7 +319,9 @@ h3 { margin: 0; font-size: 0.98rem; font-weight: 600; letter-spacing: -0.015em; 
 .image-placeholder small { color: #92999f; font-size: 0.65rem; }
 .publication-year { display: flex; align-items: center; gap: 9px; margin: 0 0 7px; color: var(--warm); font-size: 0.67rem; font-weight: 700; letter-spacing: 0.06em; }
 .publication-year span { color: #9ba1a5; font-size: 0.58rem; }
-.publication h3 { font-family: Georgia, "Times New Roman", serif; font-size: 1.17rem; font-weight: 400; letter-spacing: -0.025em; line-height: 1.32; }
+.publication h3 { font-family: "Manrope Variable", "Segoe UI", sans-serif; font-size: 1.15rem; font-weight: 630; letter-spacing: -0.018em; line-height: 1.36; }
+.publication-award { display: inline-flex; align-items: center; gap: 5px; margin: 10px 0 0; padding: 5px 9px; border: 1px solid color-mix(in srgb, #c38a18 32%, var(--card-border)); border-radius: 999px; background: color-mix(in srgb, #f5c451 18%, var(--card)); color: color-mix(in srgb, #9c6810 82%, var(--ink)); font-size: 0.66rem; font-weight: 750; line-height: 1; }
+:root[data-theme="dark"] .publication-award { color: #f5d482; }
 .publication-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
 .publication-tags span {
   display: inline-flex;
@@ -372,10 +381,14 @@ h3 { margin: 0; font-size: 0.98rem; font-weight: 600; letter-spacing: -0.015em; 
 .render-card figcaption span { color: var(--warm); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
 .render-card figcaption strong { font-size: 0.9rem; }
 
+.cv-page { padding-top: 18px; padding-bottom: 24px; }
+.cv-viewer-shell { overflow: hidden; border: 1px solid var(--card-border); border-radius: 20px; background: #d9dde0; box-shadow: var(--card-shadow); }
+.cv-viewer { display: block; width: 100%; height: calc(100vh - 104px); min-height: 720px; border: 0; }
+
 .contact-section { display: flex; align-items: baseline; justify-content: space-between; gap: 25px; padding: 38px 0 48px; }
 .contact-section p { display: flex; align-items: center; gap: 8px; margin: 0; color: var(--warm); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
 .contact-section p svg { width: 16px; height: 16px; }
-.contact-section a { color: var(--accent); font-family: Georgia, "Times New Roman", serif; font-size: 1.08rem; }
+.contact-section a { color: var(--accent); font-family: "Bricolage Grotesque Variable", "Manrope Variable", sans-serif; font-size: 1.08rem; font-weight: 650; }
 .site-footer { padding: 21px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.7rem; }
 .site-footer .page-width { display: flex; justify-content: space-between; gap: 20px; }
 
@@ -390,36 +403,62 @@ h3 { margin: 0; font-size: 0.98rem; font-weight: 600; letter-spacing: -0.015em; 
 
 @media (max-width: 680px) {
   .page-width { width: min(100% - 34px, 620px); }
-  .header-inner { min-height: 58px; }
-  .nav-toggle { display: flex; z-index: 3; width: 34px; height: 34px; padding: 8px 4px; flex-direction: column; justify-content: center; gap: 6px; }
-  .nav-toggle span { width: 25px; height: 1px; background: var(--ink); transition: transform 160ms ease; }
+  .header-inner { position: relative; min-height: 58px; }
+  .nav-toggle { display: flex; z-index: 3; width: 36px; height: 36px; padding: 8px 5px; flex-direction: column; align-items: center; justify-content: center; gap: 6px; border-radius: 10px; cursor: pointer; }
+  .nav-toggle:hover { background: var(--surface); }
+  .nav-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .nav-toggle span { width: 23px; height: 1.5px; border-radius: 999px; background: var(--ink); transition: transform 160ms ease; }
   .nav-toggle[aria-expanded="true"] span:first-child { transform: translateY(3.5px) rotate(45deg); }
   .nav-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
-  .site-nav { position: fixed; inset: 0; z-index: 2; display: none; padding: 96px 28px 40px; flex-direction: column; align-items: flex-start; background: var(--paper); font-family: Georgia, "Times New Roman", serif; font-size: 1.35rem; }
-  .theme-control { margin-top: 8px; }
+  .site-nav {
+    position: absolute;
+    top: calc(100% + 9px);
+    right: 0;
+    z-index: 2;
+    display: none;
+    width: min(270px, calc(100vw - 34px));
+    padding: 9px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    background: var(--card);
+    box-shadow: 0 18px 46px rgba(25, 35, 45, 0.17);
+    font-family: "Manrope Variable", "Segoe UI", sans-serif;
+    font-size: 0.88rem;
+    letter-spacing: -0.01em;
+  }
+  .site-nav a { display: flex; min-height: 42px; align-items: center; padding: 0 12px; border-radius: 10px; font-weight: 650; }
+  .site-nav a:hover { background: var(--surface); }
+  .site-nav .theme-control { min-height: 43px; margin-top: 5px; padding: 7px 12px 0; border-top: 1px solid var(--line); }
   .site-nav.is-open { display: flex; }
-  body.nav-open { overflow: hidden; }
   main { padding-top: 38px; }
   .intro-section { grid-template-columns: 112px minmax(0, 1fr); gap: 24px; margin-bottom: 18px; padding: 22px 18px 26px; border-radius: 19px; }
   .intro-section::before { right: 18px; left: 18px; }
-  .intro-section > .portrait { grid-row: 1 / span 2; }
+  .intro-section > .portrait { grid-column: 1; grid-row: 1 / span 2; }
   .intro-copy { display: contents; }
-  .intro-copy > .location, .intro-copy > .role { grid-column: 2; }
-  .intro-copy > .bio, .intro-copy > .research-tags, .intro-copy > .profile-links { grid-column: 1 / -1; }
+  .intro-copy > .location { grid-column: 2; grid-row: 1; }
+  .intro-copy > .role { grid-column: 2; grid-row: 2; }
+  .intro-copy > .profile-name, .intro-copy > .bio, .intro-copy > .research-tags, .intro-copy > .profile-links { grid-column: 1 / -1; }
+  .profile-name { margin-top: 8px; margin-bottom: 5px; font-size: 1rem; }
   h1 { font-size: 2.7rem; }
   .role { margin-bottom: 2px; font-size: 0.78rem; }
-  .bio:first-of-type { margin-top: 17px; }
-  .research-tags { margin-top: 13px; }
+  .bio:first-of-type { margin-top: 5px; }
+  .research-tags { margin-top: 9px; }
   .content-section { padding: 40px 0; }
   .experience-columns { grid-template-columns: 1fr; gap: 42px; }
   .publication { grid-template-columns: 1fr; gap: 16px; align-items: start; }
-  .publication h3 { font-size: 1.08rem; }
+  .publication h3 { font-size: 1.05rem; line-height: 1.4; }
   .publication-image { max-height: 260px; }
   .exploration-list { grid-template-columns: 1fr; }
   .exploration.is-featured { grid-template-columns: 1fr; }
   .exploration-image { height: auto; max-height: 280px; }
   .blender-grid { grid-template-columns: 1fr; }
   .blender-hero { padding: 30px 24px; }
+  .cv-page { padding-top: 12px; }
+  .cv-viewer-shell { border-radius: 14px; }
+  .cv-viewer { height: calc(100vh - 82px); min-height: 560px; }
   .contact-section { align-items: flex-start; flex-direction: column; gap: 12px; }
   .site-footer .page-width { flex-direction: column; }
 }
