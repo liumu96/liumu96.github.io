@@ -69,7 +69,10 @@ button { color: inherit; font: inherit; }
   gap: 28px;
 }
 
-.site-name { font-family: "Bricolage Grotesque Variable", "Manrope Variable", sans-serif; font-size: 1.12rem; font-weight: 720; letter-spacing: -0.045em; }
+.site-name { font-size: 1.2rem; line-height: 1.3; }
+.name-wordmark { font-family: "Manrope Variable", "Segoe UI", sans-serif; white-space: nowrap; word-spacing: 0.06em; }
+.name-wordmark .name-given { font-weight: 450; letter-spacing: 0.005em; }
+.name-wordmark .name-family { font-weight: 620; letter-spacing: -0.025em; }
 .site-nav { display: flex; align-items: center; gap: 25px; font-size: 0.78rem; letter-spacing: 0.02em; }
 .site-nav a, .profile-links a, .publication-links a { transition: color 160ms ease, border-color 160ms ease; }
 .site-nav a:hover, .profile-links a:hover, .publication-links a:hover { color: var(--warm); }
@@ -170,12 +173,12 @@ h1 {
   line-height: 1;
 }
 
-.profile-name { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 0.32em; margin-bottom: 10px; font-size: 1.04rem; font-weight: 520; letter-spacing: -0.018em; line-height: 1.4; }
-.profile-hello { color: var(--warm); font-weight: 680; }
+.profile-name { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 0.32em; margin-bottom: 10px; font-family: "Manrope Variable", "Segoe UI", sans-serif; font-size: 1.04rem; font-weight: 500; letter-spacing: -0.018em; line-height: 1.4; }
+.profile-hello { color: var(--warm); font-weight: 500; }
 .profile-identity { display: inline-flex; align-items: baseline; gap: 0.18em; }
-.profile-name strong { font-weight: 750; }
+.profile-name strong { font-weight: 600; }
 .profile-name-divider { color: var(--line); font-weight: 400; }
-.profile-name-cn { color: var(--muted); font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif; font-size: 0.88em; font-weight: 680; letter-spacing: 0.05em; }
+.profile-name-cn { margin-inline: 0.08em; color: var(--ink); font-family: "Kaiti SC", "KaiTi", "STKaiti", "Noto Serif CJK SC", serif; font-size: 1.08em; font-weight: 400; font-synthesis: none; letter-spacing: 0.1em; }
 .profile-greeting-emoji { align-self: center; font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif; font-size: 0.95em; letter-spacing: 0; }
 .profile-welcome { color: var(--muted); font-size: 0.86em; font-weight: 520; }
 .role { margin: 0 0 15px; color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
@@ -455,12 +458,14 @@ a.publication-title-link:hover { color: var(--accent); }
 .project-highlight-list li:last-child { padding-bottom: 0; }
 .project-highlight-list span { color: var(--warm); font-size: 0.68rem; font-weight: 750; letter-spacing: 0.08em; }
 .project-highlight-list p { margin: 0; font-size: 0.9rem; line-height: 1.65; }
-.related-publications { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 54px; padding-top: 52px; }
+.related-publications { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; padding-top: 42px; }
 .related-publication-list { display: grid; border-top: 1px solid var(--line); }
-.related-publication-list a { display: grid; grid-template-columns: 52px minmax(0, 1fr) 20px; gap: 14px; align-items: start; padding: 19px 0; border-bottom: 1px solid var(--line); transition: color 160ms ease; }
-.related-publication-list a:hover { color: var(--accent); }
-.related-publication-list span { color: var(--warm); font-size: 0.67rem; font-weight: 700; }
-.related-publication-list strong { font-size: 0.86rem; font-weight: 630; line-height: 1.45; }
+.related-publication-list a { display: grid; grid-template-columns: minmax(0, 1fr) 24px; gap: 24px; align-items: center; padding: 22px 12px; border-bottom: 1px solid var(--line); transition: color 160ms ease, background 160ms ease; }
+.related-publication-list a:hover { color: var(--accent); background: color-mix(in srgb, var(--soft-blue) 35%, transparent); }
+.related-publication-list a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.related-publication-copy { display: grid; gap: 7px; min-width: 0; }
+.related-publication-meta { color: var(--muted); font-size: 0.8125rem; font-weight: 450; line-height: 1.5; }
+.related-publication-list strong { font-size: 0.86rem; font-weight: 550; line-height: 1.45; }
 .related-publication-list small { color: var(--accent); font-size: 0.9rem; transition: transform 160ms ease; }
 .related-publication-list a:hover small { transform: translateX(3px); }
 
@@ -530,7 +535,7 @@ a.publication-title-link:hover { color: var(--accent); }
 .publication-year, .publication-year span, .publication-award, .publication-tags span,
 .project-eyebrow, .project-detail-label, .project-research-grid h3,
 .project-lead-figure figcaption span, .project-figure-grid figcaption span,
-.project-highlight-list span, .related-publication-list span,
+.project-highlight-list span,
 .exploration-label, .blender-card-copy p, .blender-card-copy span,
 .render-card figcaption span, .contact-section p, .site-footer {
   font-size: var(--text-label);
@@ -577,7 +582,6 @@ a.publication-title-link:hover { color: var(--accent); }
 @media (max-width: 820px) {
   .experience-columns { gap: 34px; }
   .publication { grid-template-columns: minmax(0, 35fr) minmax(0, 65fr); }
-  .related-publications { grid-template-columns: 180px minmax(0, 1fr); gap: 34px; }
   .project-research-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .project-research-grid article:last-child { grid-column: 1 / -1; }
 }

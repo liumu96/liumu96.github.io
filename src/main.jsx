@@ -90,7 +90,7 @@ function Header() {
   return (
     <header className="site-header">
       <div className="page-width header-inner">
-        <a className="site-name" href="/" onClick={() => setOpen(false)}>Xing Liu</a>
+        <a className="site-name name-wordmark" href="/" onClick={() => setOpen(false)}><span className="name-given">Xing</span>{" "}<span className="name-family">Liu</span></a>
         <button
           className="nav-toggle"
           type="button"
@@ -162,7 +162,7 @@ function HomePage() {
             <h1 className="profile-name">
               <span className="profile-hello">Hi, I’m</span>
               <span className="profile-identity">
-                <strong>{profile.name}</strong>
+                <strong className="name-wordmark"><span className="name-given">Xing</span>{" "}<span className="name-family">Liu</span></strong>
                 <span className="profile-name-divider" aria-hidden="true">/</span>
                 <span className="profile-name-cn" lang="zh-CN">刘杏</span>
                 <span className="profile-greeting-emoji" aria-hidden="true">👋</span>
@@ -521,14 +521,15 @@ function PublicationPage({ publication }) {
 
         <section className="related-publications" aria-labelledby="related-publications-title">
           <div className="related-publications-heading">
-            <p className="project-detail-label">Explore</p>
             <h2 id="related-publications-title">More publications</h2>
           </div>
           <div className="related-publication-list">
             {relatedPublications.map((item) => (
               <a href={`/publications/${item.slug}`} key={item.slug}>
-                <span>{item.year}</span>
-                <strong>{item.title}</strong>
+                <span className="related-publication-copy">
+                  <strong>{item.title}</strong>
+                  <span className="related-publication-meta">{item.venueLabel} · {item.year}</span>
+                </span>
                 <small aria-hidden="true">→</small>
               </a>
             ))}
